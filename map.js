@@ -4,8 +4,8 @@
 var map;
 require(["esri/map", "dojo/domReady!"], function(Map) {
     map = new Map("map", {
-        basemap: "topo",
-        center: [51.3649, 22.5],
+        basemap: "osm",
+        center: [22.5, 51.3649],
         zoom: 13
     });
 });
