@@ -26,8 +26,6 @@ require([
 ){
     "use strict";
 
-    parser.parse();
-
     mobile.hideAddressBar();
 
     let resizeEvt = (
@@ -44,7 +42,7 @@ require([
         slider: false
     });
 
-    map.on("load", function() {
+    map.on("load", () => {
         resizeMap();
         registry.byId("mapView").on("AfterTransitionIn", resizeMap);
     });
