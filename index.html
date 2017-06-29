@@ -9,7 +9,7 @@
     <title>Apteki</title>
     <link rel="stylesheet" href="https://js.arcgis.com/3.20/esri/css/esri.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.20/dijit/themes/soria/soria.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dist/style.css">
     <script src="dist/dojoConfig.js"></script>
     <script src="https://js.arcgis.com/3.20/"></script>
     <script src="dist/map.js"></script>
@@ -17,11 +17,11 @@
 <body class="soria">
     <div id="mapView" data-dojo-type="dojox.mobile.View" data-dojo-props="selected: true">
         <div id="header" data-dojo-type="dojox.mobile.Heading">
-            <div id="aboutButton" data-dojo-type="dojox.mobile.ToolBarButton" moveTo="aboutView">
+            <div data-dojo-type="dojox.mobile.ToolBarButton" moveTo="aboutView">
                 O projekcie
             </div>
         </div>
-        <div id="mapContainer" data-dojo-type="dojox.mobile.ContentPane">
+        <div class="mapContainer" data-dojo-type="dojox.mobile.ContentPane">
             <div id="map"></div>
         </div>
     </div>
@@ -30,7 +30,7 @@
         <h1 data-dojo-type="dojox.mobile.Heading" data-dojo-props="back: 'Map', moveTo: 'mapView'">
             O projekcie
         </h1>
-        <p id="aboutParagraph">
+        <p>
             Aplikacja przedstawia rozmieszczenie aptek na terenie miasta Lublin.
         </p>
     </div>
