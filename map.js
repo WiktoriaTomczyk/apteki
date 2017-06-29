@@ -26,6 +26,8 @@ require([
 ){
     "use strict";
 
+    parser.parse();
+
     mobile.hideAddressBar();
 
     let resizeEvt = (
