@@ -67,7 +67,7 @@ require([
         if (sz.h > sz.w) {
             return screen.availHeight - window.innerHeight - 44;
         } else {
-            let _conn = on(window, "resize", function () {
+            let _conn = on(window, "resize", () => {
                _conn.remove();
                resizeMap();
             });
