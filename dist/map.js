@@ -3,7 +3,7 @@
 /**
  * Created by Wiktoria on 2017-06-27.
  */
-require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "dojox/mobile/deviceTheme", "dojo/dom", "dijit/registry", "dojo/on", "dojox/mobile/ToolBarButton", "dojox/mobile/View", "dojox/mobile/ContentPane", "dojo/domReady!"], function (Map, mobile, parser, has, dTheme, dom, registry, on) {
+require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/layers/FeatureLayer", "dojox/mobile/deviceTheme", "dojo/dom", "dijit/registry", "dojo/on", "dojox/mobile/ToolBarButton", "dojox/mobile/View", "dojox/mobile/ContentPane", "dojo/domReady!"], function (Map, mobile, parser, has, FeatureLayer, dTheme, dom, registry, on) {
     "use strict";
 
     mobile.hideAddressBar();
@@ -18,6 +18,10 @@ require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "dojox
         zoom: 13,
         slider: false
     });
+
+    var url = "http://services7.arcgis.com/HKFAbLvHKAGc8Z6g/arcgis/rest/services/apteki/FeatureServer/0";
+    var layer = new FeatureLayer(url);
+    map.addLayer(layer);
 
     map.on("load", function () {
         resizeMap();

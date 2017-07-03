@@ -6,6 +6,7 @@ require([
     "dojox/mobile",
     "dojox/mobile/parser",
     "esri/sniff",
+    "esri/layers/FeatureLayer",
     "dojox/mobile/deviceTheme",
     "dojo/dom",
     "dijit/registry",
@@ -19,6 +20,7 @@ require([
     mobile,
     parser,
     has,
+    FeatureLayer,
     dTheme,
     dom,
     registry,
@@ -41,6 +43,10 @@ require([
         zoom: 13,
         slider: false
     });
+
+    const url = "http://services7.arcgis.com/HKFAbLvHKAGc8Z6g/arcgis/rest/services/apteki/FeatureServer/0";
+    const layer = new FeatureLayer(url);
+    map.addLayer(layer);
 
     map.on("load", () => {
         resizeMap();
