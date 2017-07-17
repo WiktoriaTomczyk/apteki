@@ -14,8 +14,8 @@ require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/
 
     var map = new Map("map", {
         basemap: "osm",
-        center: [22.5, 51.3649],
-        zoom: 13,
+        center: [22.547502, 51.250364],
+        zoom: 12,
         slider: false
     });
 
