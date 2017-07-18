@@ -83,12 +83,14 @@ require([
     });
 
     const url = "http://services7.arcgis.com/HKFAbLvHKAGc8Z6g/arcgis/rest/services/apteki/FeatureServer/0";
-    const pictureMarkerSymbol = new PictureMarkerSymbol("https://cdn.pixabay.com/photo/2014/03/25/16/33/pharmacy-297390_960_720.png", 25, 25);
+    const pictureMarkerSymbol = new PictureMarkerSymbol("/apteka.png", 25, 25);
     const layer = new FeatureLayer(url,{
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ["*"],
         infoTemplate: template
     });
+    const renderer = new SimpleRenderer(pictureMarkerSymbol);
+    layer.setRenderer(renderer);
     map.addLayer(layer);
 
     map.on("load", () => {
