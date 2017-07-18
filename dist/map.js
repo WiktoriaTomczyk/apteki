@@ -3,7 +3,7 @@
 /**
  * Created by Wiktoria on 2017-06-27.
  */
-require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/layers/FeatureLayer", "esri/symbols/PictureMarkerSymbol", "esri/dijit/Popup", "esri/dijit/PopupTemplate", "esri/symbols/SimpleFillSymbol", "esri/Color", "dojox/mobile/deviceTheme", "dojo/dom-class", "dojo/dom-construct", "dojo/dom", "dijit/registry", "dojo/on", "dojox/mobile/ToolBarButton", "dojox/mobile/View", "dojox/mobile/ContentPane", "dojo/domReady!"], function (Map, mobile, parser, has, FeatureLayer, PictureMarkerSymbol, Popup, PopupTemplate, SimpleFillSymbol, Color, dTheme, domClass, domConstruct, dom, registry, on) {
+require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/layers/FeatureLayer", "esri/symbols/PictureMarkerSymbol", "esri/dijit/Popup", "esri/dijit/PopupTemplate", "esri/symbols/SimpleFillSymbol", "esri/Color", "dojox/mobile/deviceTheme", "esri/renderers/SimpleRenderer", "dojo/dom-class", "dojo/dom-construct", "dojo/dom", "dijit/registry", "dojo/on", "dojox/mobile/ToolBarButton", "dojox/mobile/View", "dojox/mobile/ContentPane", "dojo/domReady!"], function (Map, mobile, parser, has, FeatureLayer, PictureMarkerSymbol, Popup, PopupTemplate, SimpleFillSymbol, Color, dTheme, SimpleRenderer, domClass, domConstruct, dom, registry, on) {
     "use strict";
 
     mobile.hideAddressBar();
@@ -50,7 +50,6 @@ require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/
         outFields: ["*"],
         infoTemplate: template
     });
-    layer.setSelectionSymbol(pictureMarkerSymbol);
     map.addLayer(layer);
 
     map.on("load", function () {

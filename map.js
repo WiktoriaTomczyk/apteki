@@ -12,6 +12,7 @@ require([
     "esri/dijit/PopupTemplate",
     "esri/symbols/SimpleFillSymbol", "esri/Color",
     "dojox/mobile/deviceTheme",
+    "esri/renderers/SimpleRenderer",
     "dojo/dom-class", "dojo/dom-construct",
     "dojo/dom",
     "dijit/registry",
@@ -31,6 +32,7 @@ require([
     PopupTemplate,
     SimpleFillSymbol, Color,
     dTheme,
+    SimpleRenderer,
     domClass, domConstruct,
     dom,
     registry,
@@ -87,7 +89,6 @@ require([
         outFields: ["*"],
         infoTemplate: template
     });
-    layer.setSelectionSymbol(pictureMarkerSymbol);
     map.addLayer(layer);
 
     map.on("load", () => {
