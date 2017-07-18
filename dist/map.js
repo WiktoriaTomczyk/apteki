@@ -3,7 +3,7 @@
 /**
  * Created by Wiktoria on 2017-06-27.
  */
-require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/layers/FeatureLayer", "esri/symbols/PictureMarkerSymbol", "esri/dijit/Popup", "esri/dijit/PopupTemplate", "dojox/mobile/deviceTheme", "dojo/dom", "dijit/registry", "dojo/on", "dojox/mobile/ToolBarButton", "dojox/mobile/View", "dojox/mobile/ContentPane", "dojo/domReady!"], function (Map, mobile, parser, has, FeatureLayer, PictureMarkerSymbol, Popup, PopupTemplate, dTheme, dom, registry, on) {
+require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/layers/FeatureLayer", "esri/symbols/PictureMarkerSymbol", "esri/dijit/Popup", "esri/dijit/PopupTemplate", "esri/symbols/SimpleFillSymbol", "esri/Color", "dojox/mobile/deviceTheme", "dojo/dom-class", "dojo/dom-construct", "dojo/dom", "dijit/registry", "dojo/on", "dojox/mobile/ToolBarButton", "dojox/mobile/View", "dojox/mobile/ContentPane", "dojo/domReady!"], function (Map, mobile, parser, has, FeatureLayer, PictureMarkerSymbol, Popup, PopupTemplate, SimpleFillSymbol, Color, dTheme, domClass, domConstruct, dom, registry, on) {
     "use strict";
 
     mobile.hideAddressBar();
@@ -30,12 +30,12 @@ require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/
 
     var template = new PopupTemplate({
         title: "Apteki",
-        description: "test",
+        description: "{nazwa} <br>adres: {ulica} {numer}",
         fieldInfos: [{ //define field infos so we can specify an alias
             fieldName: "nazwa",
             label: "nazwa"
         }, {
-            fieldName: "adres",
+            fieldName: "ulica",
             label: "adres"
         }, {
             fieldName: "numer",
@@ -44,13 +44,13 @@ require(["esri/map", "dojox/mobile", "dojox/mobile/parser", "esri/sniff", "esri/
     });
 
     var url = "http://services7.arcgis.com/HKFAbLvHKAGc8Z6g/arcgis/rest/services/apteki/FeatureServer/0";
-    //const pictureMarkerSymbol = new PictureMarkerSymbol('/apteka.png', 25, 25);
+    var pictureMarkerSymbol = new PictureMarkerSymbol('/apteka.png', 25, 25);
     var layer = new FeatureLayer(url, {
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ["*"],
         infoTemplate: template
     });
-    //layer.setSelectionSymbol(pictureMarkerSymbol);
+    layer.setSelectionSymbol(pictureMarkerSymbol);
     map.addLayer(layer);
 
     map.on("load", function () {
