@@ -7,6 +7,9 @@ require([
     "dojox/mobile/parser",
     "esri/sniff",
     "esri/layers/FeatureLayer",
+    "esri/symbols/PictureMarkerSymbol",
+    "esri/dijit/Popup",
+    "esri/dijit/PopupTemplate",
     "dojox/mobile/deviceTheme",
     "dojo/dom",
     "dijit/registry",
@@ -21,6 +24,9 @@ require([
     parser,
     has,
     FeatureLayer,
+    PictureMarkerSymbol,
+    Popup,
+    PopupTemplate,
     dTheme,
     dom,
     registry,
@@ -37,15 +43,47 @@ require([
 
     on(window, resizeEvt, resizeMap);
 
+    var fill = new SimpleFillSymbol("solid", null, new Color("#A4CE67"));
+    var popup = new Popup({
+        fillSymbol: fill,
+        titleInBody: false
+    }, domConstruct.create("div"));
+    //Add the dark theme which is customized further in the <style> tag at the top of this page
+    domClass.add(popup.domNode, "dark");
+
+
+
     const map = new Map("map", {
         basemap: "osm",
         center: [22.547502, 51.250364],
         zoom: 12,
-        slider: false
+        slider: true,
+        infoWindow: popup
+    });
+
+    var template = new PopupTemplate({
+        title: "Apteki",
+        description: "test",
+        fieldInfos: [{ //define field infos so we can specify an alias
+            fieldName: "nazwa",
+            label: "nazwa"
+        },{
+            fieldName: "adres",
+            label: "adres"
+        },{
+            fieldName: "numer",
+            label: "numer"
+        }]
     });
 
     const url = "http://services7.arcgis.com/HKFAbLvHKAGc8Z6g/arcgis/rest/services/apteki/FeatureServer/0";
-    const layer = new FeatureLayer(url);
+    //const pictureMarkerSymbol = new PictureMarkerSymbol('/apteka.png', 25, 25);
+    const layer = new FeatureLayer(url,{
+        mode: FeatureLayer.MODE_ONDEMAND,
+        outFields: ["*"],
+        infoTemplate: template
+    });
+    //layer.setSelectionSymbol(pictureMarkerSymbol);
     map.addLayer(layer);
 
     map.on("load", () => {
