@@ -83,7 +83,7 @@ require([
     });
 
     const url = "http://services7.arcgis.com/HKFAbLvHKAGc8Z6g/arcgis/rest/services/apteki/FeatureServer/0";
-    const pictureMarkerSymbol = new PictureMarkerSymbol("/apteka.png", 25, 25);
+    const pictureMarkerSymbol = new PictureMarkerSymbol("apteka.png", 25, 25);
     const layer = new FeatureLayer(url,{
         mode: FeatureLayer.MODE_ONDEMAND,
         outFields: ["*"],
