@@ -10,6 +10,7 @@ require([
     "esri/symbols/PictureMarkerSymbol",
     "esri/dijit/Popup",
     "esri/dijit/PopupTemplate",
+    "esri/dijit/Search",
     "esri/symbols/SimpleFillSymbol", "esri/Color",
     "dojox/mobile/deviceTheme",
     "esri/renderers/SimpleRenderer",
@@ -30,6 +31,7 @@ require([
     PictureMarkerSymbol,
     Popup,
     PopupTemplate,
+    Search,
     SimpleFillSymbol, Color,
     dTheme,
     SimpleRenderer,
@@ -125,4 +127,9 @@ require([
             return 0;
         }
     }
+
+    const search = new Search({
+        map: map
+    }, "search");
+    search.startup();
 });
